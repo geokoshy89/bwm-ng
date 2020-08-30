@@ -9,7 +9,9 @@ mongoose.connect(config.DB_URI,
    fakeDb.seedDb();
  });
 const app=express();
+
 app.use('/api/v1/rentals',rentalRoutes);
+
 const PORT=process.env.PORT||3001;
 app.listen(PORT,function(){
   console.log('App is running');
