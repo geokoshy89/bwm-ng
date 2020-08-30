@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from './common/header/header.component';
 import { RentalComponent } from './rental/rental.component';
 import {RentalModule} from './rental/rental.module';
+import {HttpClientModule} from '@angular/common/http';
 const routes:Routes=[
   {path:'',redirectTo:'/rentals',pathMatch:'full'},
 ];
@@ -19,7 +20,8 @@ const routes:Routes=[
     BrowserModule,
     RouterModule.forRoot(routes),
     AppRoutingModule,
-    RentalModule
+    RentalModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
