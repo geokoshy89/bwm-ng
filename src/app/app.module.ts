@@ -22,6 +22,7 @@ const routes:Routes=[
     AppRoutingModule,
     RentalModule,
     HttpClientModule
+    //wEKQKUVLfrmi2nGA4OPoy6H0vkQpj8cZ
   ],
   providers: [],
   bootstrap: [AppComponent]
