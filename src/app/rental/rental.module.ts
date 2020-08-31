@@ -8,6 +8,8 @@ import {RouterModule,Routes} from '@angular/router';
 import { RentalDetailComponent } from './rental-detail/rental-detail.component';
 import {NgPipesModule} from 'ngx-pipes';
 import {UpperCasePipe} from '../common/pipes/upppercase.pipe';
+import {MapModule}  from '../common/map/map.module';
+
 const routes:Routes=[
   {path:'rentals',component:RentalComponent,
    children:[
@@ -24,7 +26,9 @@ const routes:Routes=[
   UpperCasePipe],
  imports:[CommonModule,
 RouterModule.forChild(routes),
-NgPipesModule],
+NgPipesModule,
+    MapModule
+],
  providers:[RentalService]
 })
 export class RentalModule{
