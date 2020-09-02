@@ -1,6 +1,6 @@
-import { 
-  Component, 
-  Input, 
+import {
+  Component,
+  Input,
   ViewEncapsulation } from '@angular/core';
 import { MapService } from './map.service';
 
@@ -13,13 +13,13 @@ import { MapService } from './map.service';
 export class MapComponent {
 
   private map: any;
-  public readonly API_KEY = 'Rukxk4n6MVk8oILY0HUJAmAAvAiMM1XJ';
+  public readonly API_KEY = 'wEKQKUVLfrmi2nGA4OPoy6H0vkQpj8cZ';
 
   @Input('location') set location(location: string) {
     this.createMap();
     this.getGeoLocation(location);
   };
-  
+
   constructor(private mapService: MapService) { }
 
   private createMap() {
