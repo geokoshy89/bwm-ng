@@ -1,5 +1,6 @@
 const Booking=require('../models/booking');
 const Rental=require('../models/rental');
+const User=require('../models/user');
 
 const {normalizeErrors}=require('../helpers/mongoose');
 const moment=require('moment');
@@ -21,11 +22,20 @@ exports.createBooking=function(req,res){
           detail:'Can not create a booking on your rental'}]});
         }
         if(isValidBooking(booking,foundRental)){
+          booking.user=user;
           foundRental.bookings.push(booking);
-          foundRental.save();
-          booking.save();
-          //update rental,update user
-            return res.json({booking,foundRental});
+          booking.rental=foundRental;
+          booking.save(function(err){
+            if(err){
+              return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+            foundRental.save();
+            User.update(
+              {_id:user.id},
+              {$push:{bookings:booking}},function(){});
+              return res.json({startAt:booking.startAt,endAt:booking.endAt});
+          }); 
+           
         }else{
           return res.status(422).send({errors:[{title:'Invalid Booking !',
           detail:'Chosen dates are already taken'}]});
